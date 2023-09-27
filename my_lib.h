@@ -2,11 +2,8 @@
 #include <string>
 #include <vector>
 
-using std::cout; 
-using std::string;
-using std::cin;
-using std::endl;
-using std::vector;
+
+using namespace std;
 
 struct Studentas {
   string vard, pav;
@@ -14,7 +11,7 @@ struct Studentas {
   int egz;
   float rez;
 
-  
+
 };
 
 
