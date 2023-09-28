@@ -10,7 +10,7 @@ vector <Studentas> inputas();
 void printas(vector <Studentas> sarasas, string decision);
 float vidurkis(vector <int> pazymiai, int egzaminas);
 float mediana(vector <int> pazymiai);
-
+vector <int> input_loop();
 
 
 int main()
@@ -37,16 +37,11 @@ vector <Studentas> inputas()
     {
         cout<<"Studento vardas ir pavarde: ";
         cin>> laik.vard >> laik.pav;
-        cout<<"Kiek pazymiu turi studentas? ";
-        int n;
-        cin>>n;
-        for(int j=0; j<n; j++)
-        {
-            int k;
-            cout<<"Iveskite "<<j+1<<" pazymi: ";
-            cin>>k;
-            laik.paz.push_back(k);
-        }
+        laik.paz = input_loop();
+        // for(auto &a:laik.paz)
+        // {
+        //     cout<<a<<endl;
+        // }
         cout<<"Iveskite egzamina: ";
         cin>>laik.egz;
         studentai.push_back(laik);
@@ -57,6 +52,29 @@ vector <Studentas> inputas()
 }
 
 
+vector <int> input_loop()
+{
+
+    vector <int> paz;
+    int a;
+    cin.ignore();
+    cout<<"Iveskite studento pazymius: "<<endl;
+    while(cin.peek() != '\n' && cin>>a)
+    {
+        if(0<a<10)
+        {
+            paz.push_back(a);
+        }
+        else
+        {
+            cout<<"neteisingas pazymys, bandykite dar karta";
+            input_loop();
+        }
+
+    }
+    return paz;
+}
+
 // funkcija apskaiciuojanti vidurki ir grazinanti ji
 float vidurkis(vector <int> pazymiai, int egzaminas)
 {
@@ -66,7 +84,7 @@ float vidurkis(vector <int> pazymiai, int egzaminas)
         rezultatas += a;
     }
     rezultatas = (rezultatas/pazymiai.size())*0.4; // pazymiu vidurkis
-    rezultatas += egzaminas*0.4; // pridedam egzamino svori/dali?
+    rezultatas = rezultatas + (egzaminas*0.6); // pridedam egzamino svori/dali
     return rezultatas;
 }
 
