@@ -9,6 +9,8 @@ void printas(vector <Studentas> sarasas, string decision);
 float vidurkis(vector <int> pazymiai, int egzaminas);
 float mediana(vector <int> pazymiai);
 void input_loop(Studentas& laik);
+void manual_input(Studentas& laik);
+void random_input(Studentas& laik);
 
 
 int main()
@@ -35,10 +37,17 @@ vector <Studentas> inputas()
     {
         cout<<"Studento vardas ir pavarde: ";
         cin>> laik.vard >> laik.pav;
-        cout<<"Ivedus pazymi paspauskite enter"<<endl;
-        cout<<"Pazymiu ivedimui baigti paspauskite q arba enter"<<endl;
-        cout<<"Iveskite studento pazymius: ";
-        input_loop(laik);
+        cout<<"Pasirinkite kaip norite ivesti studento pazymius autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
+        string choice;
+        cin>>choice;
+        if(choice == "a" || choice == "A")
+        {
+            random_input(laik);
+        }
+        else if(choice == "r" || choice == "R")
+        {
+            manual_input(laik);
+        }
         cout<<"Iveskite egzamina: ";
         cin>>laik.egz;
         studentai.push_back(laik);
@@ -47,7 +56,22 @@ vector <Studentas> inputas()
 
     return studentai;
 }
+void manual_input(Studentas& laik)
+{
+        cout<<"Ivedus pazymi paspauskite enter"<<endl;
+        cout<<"Pazymiu ivedimui baigti paspauskite q arba enter"<<endl;
+        cout<<"Iveskite studento pazymius: ";
+        input_loop(laik);
+}
 
+void random_input(Studentas& laik)
+{
+    srand(time(0));
+    for(int i=0; i<10; i++) {
+        int j = rand() % 10 + 1;
+        laik.paz.push_back(j);
+    }
+}
 
 void input_loop(Studentas& laik)
 {
