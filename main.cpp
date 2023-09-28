@@ -2,14 +2,29 @@
 #include <iomanip>
 #include <algorithm>
 
+
+
 using namespace std;
 
-
-float vidurkis(vector <int> pazymiai, int egzaminas);
-int mediana(vector <int> pazymiai);
+vector <Studentas> inputas();
 void printas(vector <Studentas> sarasas);
+float vidurkis(vector <int> pazymiai, int egzaminas);
+float mediana(vector <int> pazymiai);
+
+
 
 int main()
+{
+    vector <Studentas> studentai = inputas();
+
+    printas(studentai);
+
+    return 0;
+}
+
+
+//inputo funkcija
+vector <Studentas> inputas()
 {
     Studentas laik;
     vector <Studentas> studentai;
@@ -36,10 +51,9 @@ int main()
         laik.paz.clear();
     }
 
-    printas(studentai);
-
-    return 0;
+    return studentai;
 }
+
 
 // funkcija apskaiciuojanti vidurki ir grazinanti ji
 float vidurkis(vector <int> pazymiai, int egzaminas)
@@ -54,15 +68,16 @@ float vidurkis(vector <int> pazymiai, int egzaminas)
     return rezultatas;
 }
 
+
 // funkcija grazinanti mediana
-int mediana(vector <int> pazymiai)
+float mediana(vector <int> pazymiai)
 {
-    int mediana;
+    float mediana;
     sort(pazymiai.begin(), pazymiai.end());
     size_t size = pazymiai.size();
     if (size % 2 == 0)
     {
-        mediana = (pazymiai[size / 2 - 1]+pazymiai[size / 2 + 1]) / 2;
+        mediana = static_cast<float>(pazymiai[size / 2 - 1] + pazymiai[size / 2]) / 2;
     }
     else
     {
@@ -74,11 +89,11 @@ int mediana(vector <int> pazymiai)
 
 void printas(vector <Studentas> sarasas)
 {
-    cout<<"Vardas         Pavarde    Vid.    Med."<<endl;
-    cout<<"-----------------------------------------"<<endl;
+    cout<<"              Vardas               Pavarde    Vid.    Med."<<endl;
+    cout<<"---------------------------------------------------------"<<endl;
     for(auto &stud:sarasas)
     {
-        cout<<stud.vard<<" "<<stud.pav<<" "<<setprecision(2)<<vidurkis(stud.paz, stud.egz)<<" "<<mediana(stud.paz)<<endl;
+        cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<vidurkis(stud.paz, stud.egz)<<" "<<setprecision(2)<<setw(8)<<mediana(stud.paz)<<endl;
     }
 
 }
