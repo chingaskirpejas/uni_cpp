@@ -7,7 +7,7 @@
 using namespace std;
 
 vector <Studentas> inputas();
-void printas(vector <Studentas> sarasas);
+void printas(vector <Studentas> sarasas, string decision);
 float vidurkis(vector <int> pazymiai, int egzaminas);
 float mediana(vector <int> pazymiai);
 
@@ -16,8 +16,10 @@ float mediana(vector <int> pazymiai);
 int main()
 {
     vector <Studentas> studentai = inputas();
-
-    printas(studentai);
+    string decision;
+    cout<<"Iveskite M kad rodytu mediana, V kad rodytu vidurki"<<endl;
+    cin>>decision;
+    printas(studentai, decision);
 
     return 0;
 }
@@ -87,13 +89,31 @@ float mediana(vector <int> pazymiai)
     return mediana;
 }
 
-void printas(vector <Studentas> sarasas)
+void printas(vector <Studentas> sarasas, string decision)
 {
-    cout<<"              Vardas               Pavarde    Vid.    Med."<<endl;
-    cout<<"---------------------------------------------------------"<<endl;
-    for(auto &stud:sarasas)
+    if(decision == "v" || decision == "V")
     {
-        cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<vidurkis(stud.paz, stud.egz)<<" "<<setprecision(2)<<setw(8)<<mediana(stud.paz)<<endl;
+        cout<<"              Vardas               Pavarde       Vid."<<endl;
+        cout<<"---------------------------------------------------------"<<endl;
+        for(auto &stud:sarasas)
+        {
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<vidurkis(stud.paz, stud.egz)<<endl;
+        }
     }
-
+    else if(decision == "m" || decision == "M")
+    {
+        cout<<"              Vardas               Pavarde    Med."<<endl;
+        cout<<"---------------------------------------------------------"<<endl;
+        for(auto &stud:sarasas)
+        {
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<mediana(stud.paz)<<endl;
+        }
+    }
+    else
+    {
+        string decision2;
+        cout<<"Neteisingas simbolis, bandykite dar karta"<<endl;
+        cin>>decision2;
+        printas(sarasas, decision2);
+    }
 }
