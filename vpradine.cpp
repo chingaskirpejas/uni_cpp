@@ -2,15 +2,13 @@
 #include <iomanip>
 #include <algorithm>
 
-
-
 using namespace std;
 
 vector <Studentas> inputas();
 void printas(vector <Studentas> sarasas, string decision);
 float vidurkis(vector <int> pazymiai, int egzaminas);
 float mediana(vector <int> pazymiai);
-vector <int> input_loop();
+void input_loop(Studentas& laik);
 
 
 int main()
@@ -37,11 +35,10 @@ vector <Studentas> inputas()
     {
         cout<<"Studento vardas ir pavarde: ";
         cin>> laik.vard >> laik.pav;
-        laik.paz = input_loop();
-        // for(auto &a:laik.paz)
-        // {
-        //     cout<<a<<endl;
-        // }
+        cout<<"Ivedus pazymi paspauskite enter"<<endl;
+        cout<<"Pazymiu ivedimui baigti paspauskite q arba enter"<<endl;
+        cout<<"Iveskite studento pazymius: ";
+        input_loop(laik);
         cout<<"Iveskite egzamina: ";
         cin>>laik.egz;
         studentai.push_back(laik);
@@ -52,27 +49,25 @@ vector <Studentas> inputas()
 }
 
 
-vector <int> input_loop()
+void input_loop(Studentas& laik)
 {
-
-    vector <int> paz;
-    int a;
+    string paz;
     cin.ignore();
-    cout<<"Iveskite studento pazymius: "<<endl;
-    while(cin.peek() != '\n' && cin>>a)
+    while(true)
     {
-        if(0<a<10)
+        getline(cin, paz);
+        if(paz == "q" || paz.empty())
         {
-            paz.push_back(a);
+            break;
         }
-        else
+        int in = std::stoi(paz);
+        if(in<0 || in>10)
         {
-            cout<<"neteisingas pazymys, bandykite dar karta";
-            input_loop();
+            cout<<"Ivedete bloga skaiciu";
+            continue;
         }
-
+        laik.paz.push_back(in);
     }
-    return paz;
 }
 
 // funkcija apskaiciuojanti vidurki ir grazinanti ji

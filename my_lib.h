@@ -10,6 +10,8 @@ using std::sort;
 using std::cin;
 using std::cout;
 using std::setprecision;
+using std::endl;
+using std::setw;
 
 
 struct Studentas {
