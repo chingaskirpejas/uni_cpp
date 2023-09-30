@@ -1,0 +1,14 @@
+# ninja log v5
+1024	1183	7178065620301972	zuba.exe	f38004f6f5e347ff
+5	1024	7178065618749822	CMakeFiles/zuba.dir/main.cpp.obj	2ce07c75af989b7d
+10	1039	7178065368873102	CMakeFiles/zuba.dir/functions.cpp.obj	bc36a119a7a708fb
+2	257	7178080633595669	build.ninja	dde670ac5e0e8069
+1	312	7178080633595669	build.ninja	dde670ac5e0e8069
+5	1039	7178080645205579	CMakeFiles/zuba.dir/read_from_file.cpp.obj	14a5349861ec294a
+14	1183	7178080646665577	CMakeFiles/zuba.dir/functions.cpp.obj	bc36a119a7a708fb
+6	933	7178081308389622	CMakeFiles/zuba.dir/main.cpp.obj	2ce07c75af989b7d
+934	1131	7178081310339602	zuba.exe	b0de2ae92ed466b1
+4	1001	7178089742183633	CMakeFiles/zuba.dir/read_from_file.cpp.obj	14a5349861ec294a
+16	1194	7178089744093576	CMakeFiles/zuba.dir/main.cpp.obj	2ce07c75af989b7d
+9	1205	7178089744223575	CMakeFiles/zuba.dir/functions.cpp.obj	bc36a119a7a708fb
+1205	1497	7178089747013604	zuba.exe	b0de2ae92ed466b1

@@ -23,7 +23,10 @@ int main()
                 }
                 else if(stoi(atsakymas2) == 1) {read_file(1);}
                 else if(stoi(atsakymas2) == 2) {read_file(2);}
-                else if(stoi(atsakymas2) == 3) {read_file(3);}
+                else if(stoi(atsakymas2) == 3) {
+                    cout<<"Milioninis failas buvo per didelis kad ikelt i GitHub. Del to jo programoje nera";
+                    return 0;
+                }
             }
             catch (std::invalid_argument) {
                 cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";

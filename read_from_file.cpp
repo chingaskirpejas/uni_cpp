@@ -4,5 +4,12 @@
 
 vector <Studentas> read_file(int choice)
 {
+    if(choice == 1)
+    {
 
+    }
+    else
+    {
+
+    }
 }
