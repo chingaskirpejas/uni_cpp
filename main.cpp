@@ -4,24 +4,40 @@
 int main()
 {
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;
-    cout<<"Studnetu rankiniui ivedimui spauskite 2"<<endl;
-    int atsakymas;
+    cout<<"Studentu rankiniui ivedimui spauskite 2"<<endl;
+    string atsakymas;
     cin>>atsakymas;
-    if(atsakymas != 1 && atsakymas != 2)
-    {
-        cout<<"Negalima komanda, prasau patikrinkite ar teisingai irasete skaiciu"<<endl;
-        return 0;
+    try {
+        if (stoi(atsakymas) != 1 && stoi(atsakymas) != 2) {
+            cout << "Negalima komanda, prasau patikrinkite ar teisingai irasete skaiciu" << endl;
+            return 0;
+        } else if (stoi(atsakymas) == 1) {
+            cout << "Kokio dydzio faila nuskaityti?" << endl;
+            cout << "1 - 10k | 2 - 100k | 3 - 1mil" << endl;
+            string atsakymas2;
+            cin >> atsakymas2;
+            try {
+                if (stoi(atsakymas2) != 1 && stoi(atsakymas2) != 2 && stoi(atsakymas2) != 3) {
+                    cout << "Ivedete neteisinga skaiciu";
+                    return 0;
+                }
+                else if(stoi(atsakymas2) == 1) {read_file(1);}
+                else if(stoi(atsakymas2) == 2) {read_file(2);}
+                else if(stoi(atsakymas2) == 3) {read_file(3);}
+            }
+            catch (std::invalid_argument) {
+                cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
+            }
+        } else {
+            vector<Studentas> studentai = inputas();
+            printas(studentai);
+        }
     }
-    else if(atsakymas == 1)
+    catch(std::invalid_argument)
     {
-        cout<<"Kolkas nuskaitymas is failo dar nera galimas"<<endl;
-        return 0;
+        cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
     }
-    else
-    {
-        vector <Studentas> studentai = inputas();
-        printas(studentai);
-    }
+
 
     return 0;
 }
