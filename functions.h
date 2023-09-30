@@ -18,6 +18,7 @@ float mediana(vector <int> pazymiai);
 void input_loop(Studentas& laik);
 void manual_input(Studentas& laik);
 void random_input(Studentas& laik);
-vector <Studentas> read_file(int choice);
+void read_file(int choice);
+void parse_file(string const& filename);
 
 #endif //UNI_CPP_FUNCTIONS_H
