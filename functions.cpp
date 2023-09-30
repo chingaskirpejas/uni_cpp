@@ -2,42 +2,7 @@
 #include "functions.h"
 
 //inputo funkcija
-vector <Studentas> inputas()
-{
-    Studentas laik;
-    vector <Studentas> studentai;
-    int studentu_sk;
-    cout<<"Iveskite studentu skaiciu: ";
-    cin>>studentu_sk;
-    while (studentu_sk <1)
-    {
-        cout<<"Studentu skaicius negali buti maziau nulio. Prasau bandykite dar karta: ";
-        cin>>studentu_sk;
-    }
 
-    for(int i=0; i<studentu_sk; i++)
-    {
-        cout<<"Studento vardas ir pavarde: ";
-        cin>> laik.vard >> laik.pav;
-        cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
-        string choice;
-        cin>>choice;
-        if(choice == "a" || choice == "A")
-        {
-            random_input(laik);
-        }
-        else if(choice == "r" || choice == "R")
-        {
-            manual_input(laik);
-        }
-        cout<<"Iveskite egzamina: ";
-        cin>>laik.egz;
-        studentai.push_back(laik);
-        laik.paz.clear();
-    }
-
-    return studentai;
-}
 void manual_input(Studentas& laik)
 {
     cout<<"Ivedus pazymi paspauskite enter"<<endl;
@@ -53,6 +18,7 @@ void random_input(Studentas& laik)
         int j = rand() % 10 + 1;
         laik.paz.push_back(j);
     }
+    laik.egz = rand() % 10 + 1;
 }
 
 void input_loop(Studentas& laik)
