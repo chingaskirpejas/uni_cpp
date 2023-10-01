@@ -20,5 +20,6 @@ void manual_input(Studentas& laik);
 void random_input(Studentas& laik);
 void read_file(int choice);
 void parse_file(string const& filename);
+bool pagal_varda(Studentas& a, Studentas& b);
 
 #endif //UNI_CPP_FUNCTIONS_H

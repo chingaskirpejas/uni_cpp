@@ -3,6 +3,13 @@
 
 //inputo funkcija
 
+bool pagal_varda(Studentas& a, Studentas& b)
+{
+    return a.vard<b.vard;
+}
+
+
+
 void manual_input(Studentas& laik)
 {
     cout<<"Ivedus pazymi paspauskite enter"<<endl;
@@ -76,6 +83,7 @@ float mediana(vector <int> pazymiai)
 
 void printas(vector <Studentas> sarasas)
 {
+    sort(sarasas.begin(), sarasas.end(), pagal_varda())
     string decision;
     cout<<"Iveskite M kad rodytu mediana, V kad rodytu vidurki"<<endl;
     cin>>decision;
@@ -87,20 +95,20 @@ void printas(vector <Studentas> sarasas)
 
     if(decision == "v" || decision == "V")
     {
-        cout<<"              Vardas               Pavarde       Vid."<<endl;
+        cout<<"              Vardas               Pavarde        Vid."<<endl;
         cout<<"---------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<vidurkis(stud.paz, stud.egz)<<endl;
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<endl;
         }
     }
     else if(decision == "m" || decision == "M")
     {
-        cout<<"              Vardas               Pavarde    Med."<<endl;
+        cout<<"              Vardas               Pavarde        Med."<<endl;
         cout<<"---------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(8)<<mediana(stud.paz)<<endl;
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<endl;
         }
     }
 }

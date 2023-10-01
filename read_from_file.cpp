@@ -36,7 +36,6 @@ void parse_file(string const& filename)
             }
 
             nd_dydis = stulpeliai.size()-3;
-            cout<<nd_dydis;
         }
         while(getline(file, line))
         {
@@ -49,9 +48,9 @@ void parse_file(string const& filename)
                 stulpeliai.push_back(stulp);
             }
 
-            laik.vard = stulpeliai[1];
-            laik.pav = stulpeliai[2];
-            for(int i=3; i<nd_dydis; i++)
+            laik.vard = stulpeliai[0];
+            laik.pav = stulpeliai[1];
+            for(int i=2; i<nd_dydis; i++)
             {
                 laik.paz.push_back(stoi(stulpeliai[i]));
             }
