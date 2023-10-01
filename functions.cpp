@@ -83,7 +83,7 @@ float mediana(vector <int> pazymiai)
 
 void printas(vector <Studentas> sarasas)
 {
-    sort(sarasas.begin(), sarasas.end(), pagal_varda())
+    sort(sarasas.begin(), sarasas.end(), pagal_varda);
     string decision;
     cout<<"Iveskite M kad rodytu mediana, V kad rodytu vidurki"<<endl;
     cin>>decision;
