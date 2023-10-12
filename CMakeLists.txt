@@ -8,4 +8,6 @@ add_executable(zuba
         functions.cpp
         functions.h
         my_lib.h
-        read_from_file.cpp)
+        read_from_file.cpp
+        file_generator.cpp
+        file_generator.h)
