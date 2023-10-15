@@ -8,6 +8,8 @@ struct Studentas {
     vector <int> paz;
     int egz;
     float rez;
+
+    string get_string();
 };
 
 

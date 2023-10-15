@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
+#include <random>
 
 using std::vector;
 using std::string;
@@ -20,3 +21,5 @@ using std::exception;
 using std::ifstream;
 using std::getline;
 using std::istringstream;
+using std::ofstream;
+using std::to_string;

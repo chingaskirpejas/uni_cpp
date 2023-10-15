@@ -4,5 +4,5 @@
 vector <string> read_surenames();
 vector <string> read_names();
 void generate_files();
-void create_x(int amount, vector <string> var, vector <string> pav);
+void create_x(int amount, int paz_kiek);
 #endif //ZUBA_FILE_GENERATOR_H
