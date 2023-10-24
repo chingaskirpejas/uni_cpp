@@ -15,30 +15,37 @@ void generate_files()
     {
         cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
     }
-
-    cout<<"Kokio dydzio faila sugeneruoti? 1k | 10k | 100k | 1m | 10m"<<endl;
-    cout<<"                                 1    2     3     4     5"<<endl;
-    string answ;
-    cin>>answ;
-    try{
-        int ans = stoi(answ);
-        if (ans != 1  && ans != 2  && ans != 3  && ans != 4  && ans != 5)
-        {
-            cout << "Negalima komanda, prasau patikrinkite ar teisingai irasete skaiciu" << endl;
-        }
-        else if(ans == 1){create_x(1000, stoi(paz_ans));}
-        else if(ans == 2){create_x(10000, stoi(paz_ans));}
-        else if(ans == 3){create_x(100000, stoi(paz_ans));}
-        else if(ans == 4){create_x(1000000, stoi(paz_ans));}
-        else {create_x(10000000, stoi(paz_ans));}
-
-    }
-    catch (std::invalid_argument)
-    {
-        cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
-    }
+    cout<<"Generuojami failai"<<endl;
+    create_x(1000, stoi(paz_ans));
+    create_x(10000, stoi(paz_ans));
+    create_x(100000, stoi(paz_ans));
+    create_x(1000000, stoi(paz_ans));
+    create_x(10000000, stoi(paz_ans));
 
 }
+
+
+void run_test(int amount, int paz_kiek)
+{
+    auto start = std::chrono::high_resolution_clock::now();
+
+    create_x(amount, paz_kiek);
+
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    cout << "Failo kurimas uztruko" << duration.count() <<endl;
+
+
+    vector <Studentas> vargsiukai;
+    vargsiukai.reserve(amount);
+    vector <Studentas> kietekai;
+    kietekai.reserve(amount);
+
+    read_file(amount, paz_kiek, vargsiukai, kietekai);
+
+}
+
 
 void create_x(int amount, int paz_kiek)
 {
@@ -47,7 +54,7 @@ void create_x(int amount, int paz_kiek)
     std::uniform_int_distribution<> dist(1, 10);
 
     string kiek = to_string(amount);
-    ofstream outfile(kiek+"d.txt");
+    ofstream outfile(kiek+".txt");
     outfile<<"Vardas   Pavarde ";
     for(int i=0; i<paz_kiek; i++)
     {
@@ -67,36 +74,43 @@ void create_x(int amount, int paz_kiek)
     outfile.close();
 }
 
-
-vector <string> read_names()
+void read_file(int kiekis, int nd_dydis, vector <Studentas>& daugiau, vector <Studentas>& maziau)
 {
-    ifstream file("vardai.txt");
-    while(file.is_open())
+
+    ifstream file(to_string(kiekis) + ".txt");
+    string line;
+
+    vector <Studentas> visi_stud;
+    visi_stud.reserve(kiekis);
+
+    if(file.is_open())
     {
-        vector<string> vardai;
-        string vardas;
-        while(getline(file, vardas))
+        while(getline(file, line))
         {
-            vardai.push_back(vardas);
+            Studentas laik;
+            istringstream iss(line);
+            string stulp;
+            vector <string> stulpeliai;
+            while (iss>>stulp)
+            {
+                stulpeliai.push_back(stulp);
+            }
+
+            laik.vard = stulpeliai[0];
+            laik.pav = stulpeliai[1];
+            for(int i=2; i<nd_dydis; i++)
+            {
+                laik.paz.push_back(stoi(stulpeliai[i]));
+            }
+            laik.egz = stoi(stulpeliai[stulpeliai.size()-1]);
+            laik.paz.clear();
         }
         file.close();
-        return vardai;
     }
-}
-
-
-vector <string> read_surenames()
-{
-    ifstream file("pavardes.txt");
-    while(file.is_open())
+    else
     {
-        vector <string> pavardes;
-        string pavarde;
-        while(getline(file, pavarde))
-        {
-            pavardes.push_back(pavarde);
-        }
-        file.close();
-        return pavardes;
+        cout<<"Could not open the file"<<endl;
     }
+
 }
+
