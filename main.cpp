@@ -42,8 +42,7 @@ int main()
     }
     catch(std::invalid_argument)
     {
-//      cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
-        cout << "la la la";
+      cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
     }
 
 

@@ -92,7 +92,7 @@ void create_x(int amount, int paz_kiek)
     }
     outfile<<"EGZ"<<endl;
 
-    for(int i=0; i<amount; i++)
+    for(int i=0; i<amount-1; i++)
     {
         outfile<<"Vardas"+ to_string(i+1)+" "<<"Pavarde"+to_string(i+1)<<" ";
         for(int j=0; j<paz_kiek+1; j++)
