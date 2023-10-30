@@ -19,7 +19,7 @@ Programos veikimas buvo analizuojamas penkiais skirtingais failų dydžiais (fai
 <br>
 Konkrečiai buvo analizuojamas failų su duomenimis generavimas, sugeneruotų duomenų nuskaitymas, rūšiavimas ir galiausiai surašymas į išvesties failus. <br>
 <br>
-Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuojamas pagal formulę (0.4 * Namų darbų vidurkis + 0.6 * Egzamino pažymys). Studentai turintys <br>
+Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuojamas pagal formulę (0.4 * Namų darbų vidurkis + 0.6 * Egzamino pažymys). Studentai kurių vidurkis yra mažiau nei 5 yra priskiriami vienai grupei, o studentai kurių vidurkis yra lygus arba daugiau už 5 yra priskiriami kitai grupei.  <br>
 <br>
 
  **Analizės eiga**
@@ -28,4 +28,4 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
  - Sukuriamas ir užpildomas failas
  - Nuskaitomas failo turinys
  - Failo turinys surūšiuojamas pagal minėtą kriterijų 
- - 
+ - Studentai iš kiekvienos grupes yra surašomi į atskirus failus
