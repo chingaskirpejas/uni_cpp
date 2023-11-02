@@ -24,8 +24,20 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
 
  **Analizės eiga**
  <br>
- Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui:
+ Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui, bei matuojamas laikas sugaištas kiekvienam veiksmui atlikti:
  - Sukuriamas ir užpildomas failas
  - Nuskaitomas failo turinys
  - Failo turinys surūšiuojamas pagal minėtą kriterijų 
  - Studentai iš kiekvienos grupes yra surašomi į atskirus failus
+<br>
+<br>
+Failo analizei pasibaigus, gauti rezultatai yra išvedami į ekraną.
+
+## Analizės rezultatai
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/c45c1d99-1ced-49d4-a45c-f7a73b067cbb) ![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/b572421b-7f9c-4654-ba2c-121e5b9a884a)
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/5ce30f1c-67d7-4133-99d2-eb3d7afb5d91) ![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/12f923df-7216-4659-a45f-2c94bbbc03e4)
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/a20a13e3-9d6c-451d-9d8b-6283a7d4e0ee)
+
+
+
+
