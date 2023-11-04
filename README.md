@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pirma užduotis (v0.2)
 1. Šioje programoje naudojami duomenys susije su studentais - _vardas, pavarde, pažymiai, egzamino įvertinimas_
 2. Vartotojas turi keturias parinktis darbui su duomenimis:
@@ -29,3 +30,12 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
  - Nuskaitomas failo turinys
  - Failo turinys surūšiuojamas pagal minėtą kriterijų 
  - 
+=======
+# Pirma užduotis (v0.1)
+Programos veikimo principas: su gautais duomenimis studentų pažymių vidurkio ir medianos skaičiavimas.
+<br>
+Vartotojas turi kelis pasirinkimus:
+1. **Nuskaityti studentu duomenis** iš failo ir atlikti skaičiavimus
+2. **Ranka įvesti duomenis** per vartotojo sąsają ir su turimais duomenimis atlikti skaičiavimus
+3. Duomenų išvedimas rašant ranka galimas pagal **vidurkį** arba **mediana**, skaitant iš failo bus rodomi **vidurkis** ir **mediana**
+>>>>>>> 1f69b99c8d571df433d27a6e4d6c68e85bdb2ea8
