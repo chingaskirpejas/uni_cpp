@@ -4,6 +4,8 @@
 
 int main()
 {
+
+
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;
     cout<<"Studentu rankiniui ivedimui spauskite 2"<<endl;
     cout<<"Studentu failu generavimui spauskite 3"<<endl;

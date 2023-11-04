@@ -1,6 +1,7 @@
 #include "file_generator.h"
 #include "my_lib.h"
 #include "functions.h"
+#include "list_test.h"
 
 
 void generate_files()
@@ -18,15 +19,38 @@ void generate_files()
         return;
     }
 
-    run_test(1000, stoi(paz_ans));
-    run_test(10000, stoi(paz_ans));
-    run_test(100000, stoi(paz_ans));
-    run_test(1000000, stoi(paz_ans));
-    run_test(10000000, stoi(paz_ans));
+    cout<<"Su kokia duomenu struktura vykdyti testa?"<<endl;
+    cout<<"1 - vector tipo | 2 - list tipo"<<endl;
+    int test_ats;
+    cin>>test_ats;
+    try{
+        if (test_ats != 1 && test_ats != 2){
+            cout<<"Ivedete neteisinga skaiciu";
+            return;
+        }
+        else if(test_ats == 1){
+            run_vector_test(1000, stoi(paz_ans));
+            run_vector_test(10000, stoi(paz_ans));
+            run_vector_test(100000, stoi(paz_ans));
+            run_vector_test(1000000, stoi(paz_ans));
+            run_vector_test(10000000, stoi(paz_ans));
+        }else{
+            run_list_test(1000, stoi(paz_ans));
+            run_list_test(10000, stoi(paz_ans));
+            run_list_test(100000, stoi(paz_ans));
+            run_list_test(1000000, stoi(paz_ans));
+            run_list_test(10000000, stoi(paz_ans));
+        }
+    }catch (std::invalid_argument){
+        cout<<"Iveskite skaiciu o ne raide";
+        return;
+    }
+
+
 }
 
 
-void run_test(int amount, int paz_kiek)
+void run_vector_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
 
@@ -74,6 +98,7 @@ void run_test(int amount, int paz_kiek)
     auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
     cout<<"Rasymas i failus uztruko "<< duration3.count() << " ms" << endl;
+    cout<<endl;
 }
 
 
