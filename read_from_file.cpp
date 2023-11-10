@@ -6,11 +6,15 @@ void read_file(int choice)
 {
     if(choice == 1)
     {
-        parse_file("../10000.txt");
+        parse_file("../studentai10000.txt");
+    }
+    else if (choice == 2)
+    {
+        parse_file("../studentai100000.txt");
     }
     else
     {
-        parse_file("../100000.txt");
+        parse_file("../studentai1000000.txt");
     }
 }
 

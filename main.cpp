@@ -1,12 +1,10 @@
 #include "my_lib.h"
 #include "functions.h"
-#include "file_generator.h"
 
 int main()
 {
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;
     cout<<"Studentu rankiniui ivedimui spauskite 2"<<endl;
-    cout<<"Studentu failu generavimui spauskite 3"<<endl;
     string atsakymas;
     cin>>atsakymas;
     try {
@@ -26,18 +24,16 @@ int main()
                 else if(stoi(atsakymas2) == 1) {read_file(1);}
                 else if(stoi(atsakymas2) == 2) {read_file(2);}
                 else if(stoi(atsakymas2) == 3) {
-                    cout<<"Milijoninis failas buvo per didelis kad ikelt i GitHub. Del to jo programoje nera";
-                    return 0;
+                    cout<<"Milijoninis failas buvo per didelis kad ikelt i GitHub.";
+                    read_file(2);
                 }
             }
             catch (std::invalid_argument) {
                 cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
             }
-        } else if (stoi(atsakymas) == 2){
+        } else if (stoi(atsakymas) == 2) {
             vector<Studentas> studentai = inputas();
             printas(studentai);
-        } else if (stoi(atsakymas) == 3){
-            generate_files();
         }
     }
     catch(std::invalid_argument)
