@@ -25,7 +25,7 @@ int main()
                 else if(stoi(atsakymas2) == 2) {read_file(2);}
                 else if(stoi(atsakymas2) == 3) {
                     cout<<"Milijoninis failas buvo per didelis kad ikelt i GitHub.";
-                    read_file(2);
+                    read_file(3);
                 }
             }
             catch (std::invalid_argument) {
