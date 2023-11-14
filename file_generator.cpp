@@ -18,7 +18,12 @@ void generate_files()
         cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
         return;
     }
-
+    cout<<"Kuriami failai...";
+    create_x(1000, stoi(paz_ans));
+    create_x(10000, stoi(paz_ans));
+    create_x(100000, stoi(paz_ans));
+    create_x(1000000, stoi(paz_ans));
+    create_x(10000000, stoi(paz_ans));
     cout<<"Su kokia duomenu struktura vykdyti testa?"<<endl;
     cout<<"1 - vector tipo | 2 - list tipo"<<endl;
     int test_ats;
@@ -54,22 +59,11 @@ void run_vector_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
 
-    //      FAILO KURIMAS
+    //     FAILO NUSKAITYMAS
     auto start = std::chrono::high_resolution_clock::now();
-
-    create_x(amount, paz_kiek);
-
+    vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-
-    cout << "Failo kurimas uztruko " << duration.count() << " ms" <<endl;
-
-
-    //     FAILO NUSKAITYMAS
-    start = std::chrono::high_resolution_clock::now();
-    vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
     cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 

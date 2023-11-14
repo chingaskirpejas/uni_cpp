@@ -5,22 +5,11 @@ void run_list_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
 
-    //      FAILO KURIMAS
+    //     FAILO NUSKAITYMAS
     auto start = std::chrono::high_resolution_clock::now();
-
-    create_x(amount, paz_kiek);
-
+    list <Studentas> visi_studentai = read_file_list(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-
-    cout << "Failo kurimas uztruko " << duration.count() << " ms" <<endl;
-
-
-    //     FAILO NUSKAITYMAS
-    start = std::chrono::high_resolution_clock::now();
-    list <Studentas> visi_studentai = read_file_list(amount, paz_kiek);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
     cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
