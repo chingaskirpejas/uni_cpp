@@ -3,9 +3,9 @@
 #include "file_generator.h"
 #ifndef ZUBA_LIST_TEST_H
 #define ZUBA_LIST_TEST_H
-#include <list>
 
-using std::list;
+
+
 
 void run_list_test(int amount, int paz_kiek);
 list<Studentas> read_file_list(int kiekis, int nd_dydis);

@@ -12,7 +12,7 @@ struct Studentas {
     string get_string();
 };
 
-
+list<Studentas> list_inputas();
 vector <Studentas> inputas();
 void printas(vector <Studentas> sarasas);
 float vidurkis(vector <int> pazymiai, int egzaminas);

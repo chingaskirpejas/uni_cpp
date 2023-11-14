@@ -112,3 +112,36 @@ void printas(vector <Studentas> sarasas)
         }
     }
 }
+
+
+void printas(list<Studentas>& sarasas)
+{
+    sarasas.sort(pagal_varda);
+    string decision;
+    cout<<"Iveskite M kad rodytu mediana, V kad rodytu vidurki"<<endl;
+    cin>>decision;
+    while(decision != "V" && decision != "v" && decision != "m" && decision != "M")
+    {
+        cout<<"Neteisingai ivestas simbolis, bandykite dar karta: "<<endl;
+        cin>>decision;
+    }
+
+    if(decision == "v" || decision == "V")
+    {
+        cout<<"              Vardas               Pavarde        Vid.       Memory Address"<<endl;
+        cout<<"---------------------------------------------------------------------------"<<endl;
+        for(auto &stud:sarasas)
+        {
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<&stud<<endl;
+        }
+    }
+    else if(decision == "m" || decision == "M")
+    {
+        cout<<"              Vardas               Pavarde        Med.       Memory Address"<<endl;
+        cout<<"---------------------------------------------------------------------------"<<endl;
+        for(auto &stud:sarasas)
+        {
+            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<&stud<<endl;
+        }
+    }
+}

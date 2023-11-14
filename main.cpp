@@ -34,8 +34,14 @@ int main()
                 cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
             }
         } else if (stoi(atsakymas) == 2){
-            vector<Studentas> studentai = inputas();
-            printas(studentai);
+            cout<<"Naudoti list(1) ar vector(2)?"<<endl;
+            string ats;
+            cin>>ats;
+            if(ats != "1" && ats != "2"){cout << "Neteisinga ivesti"; return 0;}
+            else if(ats == "1") {vector<Studentas> studentu_vector = inputas(); printas(studentu_vector);}
+            else {list<Studentas> studentu_list = list_inputas(); printas_list(studentu_list);}
+
+
         } else if (stoi(atsakymas) == 3){
             generate_files();
         }
@@ -53,6 +59,43 @@ vector <Studentas> inputas()
 {
     Studentas laik;
     vector <Studentas> studentai;
+    int studentu_sk;
+    cout<<"Iveskite studentu skaiciu: ";
+    cin>>studentu_sk;
+    while (studentu_sk < 1)
+    {
+        cout<<"Studentu skaicius negali buti maziau nulio. Prasau bandykite dar karta: "<<endl;
+        cin>>studentu_sk;
+    }
+
+    for(int i=0; i<studentu_sk; i++)
+    {
+        cout<<"Studento vardas ir pavarde: ";
+        cin>> laik.vard >> laik.pav;
+        cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
+        string choice;
+        cin>>choice;
+        if(choice == "a" || choice == "A")
+        {
+            random_input(laik);
+
+        }
+        else if(choice == "r" || choice == "R") {
+            manual_input(laik);
+            cout<<"Iveskite egzamina: ";
+            cin>>laik.egz;
+        }
+        studentai.push_back(laik);
+        laik.paz.clear();
+    }
+
+    return studentai;
+}
+
+list<Studentas> list_inputas()
+{
+    Studentas laik;
+    list<Studentas> studentai;
     int studentu_sk;
     cout<<"Iveskite studentu skaiciu: ";
     cin>>studentu_sk;
