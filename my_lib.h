@@ -8,6 +8,7 @@
 #include <sstream>
 #include <random>
 #include <chrono>
+#include <exception>
 
 
 using std::vector;

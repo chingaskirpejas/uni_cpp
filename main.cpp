@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "file_generator.h"
 
+
 int main()
 {
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;
@@ -40,11 +41,10 @@ int main()
             generate_files();
         }
     }
-    catch(std::invalid_argument)
+    catch(const exception& e)
     {
-      cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
+        cout << "Iveskite skaiciu o ne raide. Programa baigia darba.";
     }
-
 
     return 0;
 }
