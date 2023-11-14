@@ -66,16 +66,16 @@ void run_vector_test(int amount, int paz_kiek)
 
 
     //     FAILO NUSKAITYMAS
-    auto start1 = std::chrono::high_resolution_clock::now();
+    start = std::chrono::high_resolution_clock::now();
     vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
-    auto stop1 = std::chrono::high_resolution_clock::now();
-    auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout << "Failo nuskaitymas uztruko " <<duration1.count() << " ms" << endl;
+    cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
 
     //      FAILO RUSIAVIMAS
-    auto start2 = std::chrono::high_resolution_clock::now();
+    start = std::chrono::high_resolution_clock::now();
 
     vector <Studentas> vargsiukai;
     vargsiukai.reserve(amount);
@@ -83,23 +83,23 @@ void run_vector_test(int amount, int paz_kiek)
     kietekai.reserve(amount);
 
     atrinkimas(visi_studentai, vargsiukai, kietekai);
-    auto stop2 = std::chrono::high_resolution_clock::now();
-    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Masyvo rusiavimas uztruko "<< duration2.count() << " ms"<< endl;
+    cout<<"Masyvo rusiavimas uztruko "<< duration.count() << " ms"<< endl;
 
 
     //      RASYMAS I FAILUS
-    auto start3 = std::chrono::high_resolution_clock::now();
+    start = std::chrono::high_resolution_clock::now();
 
     write_to_file(amount, vargsiukai, kietekai);
 
-    auto stop3 = std::chrono::high_resolution_clock::now();
-    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Rasymas i failus uztruko "<< duration3.count() << " ms" << endl;
-    cout<<endl;
+    cout<<"Rasymas i failus uztruko "<< duration.count() << " ms" << endl;
 }
+
 
 
 void create_x(int amount, int paz_kiek)
@@ -131,8 +131,7 @@ void create_x(int amount, int paz_kiek)
 
 vector <Studentas> read_file(int kiekis, int nd_dydis)
 {
-
-    ifstream file("cmake-build-debug/"+to_string(kiekis) + ".txt");
+    ifstream file("C:\\Users\\Daniilas\\CLionProjects\\uni_cpp\\cmake-build-debug\\"+to_string(kiekis) + ".txt");
     string line;
 
     vector <Studentas> visi_stud;
@@ -140,6 +139,9 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
 
     if(file.is_open())
     {
+
+        getline(file, line);
+
         while(getline(file, line))
         {
             Studentas laik;

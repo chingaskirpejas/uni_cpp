@@ -17,37 +17,116 @@ void run_list_test(int amount, int paz_kiek)
 
 
     //     FAILO NUSKAITYMAS
-    auto start1 = std::chrono::high_resolution_clock::now();
-    vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
-    auto stop1 = std::chrono::high_resolution_clock::now();
-    auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    start = std::chrono::high_resolution_clock::now();
+    list <Studentas> visi_studentai = read_file_list(amount, paz_kiek);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout << "Failo nuskaitymas uztruko " <<duration1.count() << " ms" << endl;
+    cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
 
     //      FAILO RUSIAVIMAS
-    auto start2 = std::chrono::high_resolution_clock::now();
+    start = std::chrono::high_resolution_clock::now();
 
-    vector <Studentas> vargsiukai;
-    vargsiukai.reserve(amount);
-    vector <Studentas> kietekai;
-    kietekai.reserve(amount);
+    list <Studentas> vargsiukai;
+    list <Studentas> kietekai;
 
-    atrinkimas(visi_studentai, vargsiukai, kietekai);
-    auto stop2 = std::chrono::high_resolution_clock::now();
-    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    list_atrinkimas(visi_studentai, vargsiukai, kietekai);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Masyvo rusiavimas uztruko "<< duration2.count() << " ms"<< endl;
+    cout<<"Masyvo rusiavimas uztruko "<< duration.count() << " ms"<< endl;
 
 
     //      RASYMAS I FAILUS
-    auto start3 = std::chrono::high_resolution_clock::now();
+    start = std::chrono::high_resolution_clock::now();
 
-    write_to_file(amount, vargsiukai, kietekai);
+    write_list_to_file(amount, vargsiukai, kietekai);
 
-    auto stop3 = std::chrono::high_resolution_clock::now();
-    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Rasymas i failus uztruko "<< duration3.count() << " ms" << endl;
-    cout<<endl;
+    cout<<"Rasymas i failus uztruko "<< duration.count() << " ms" << endl;
+}
+
+list<Studentas> read_file_list(int kiekis, int nd_dydis)
+{
+    ifstream file("C:\\Users\\Daniilas\\CLionProjects\\uni_cpp\\cmake-build-debug\\"+to_string(kiekis) + ".txt");
+    string line;
+
+    list<Studentas> visi_stud;
+
+    if(file.is_open())
+    {
+
+        getline(file, line);
+
+        while(getline(file, line))
+        {
+            Studentas laik;
+            istringstream iss(line);
+            string stulp;
+            vector<string> stulpeliai;
+            while (iss>>stulp)
+            {
+                stulpeliai.push_back(stulp);
+            }
+
+            laik.vard = stulpeliai[0];
+            laik.pav = stulpeliai[1];
+            for(int i=2; i<nd_dydis; i++)
+            {
+                laik.paz.push_back(stoi(stulpeliai[i]));
+            }
+            laik.egz = stoi(stulpeliai[stulpeliai.size()-1]);
+            laik.rez = vidurkis(laik.paz, laik.egz);
+            visi_stud.push_back(laik);
+            laik.paz.clear();
+        }
+        file.close();
+
+    }
+    else
+    {
+        cout<<"Could not open the file"<<endl;
+    }
+    return visi_stud;
+}
+
+void list_atrinkimas(list<Studentas>& visi_studentai, list<Studentas>& vargsiukai, list<Studentas>& kietekai)
+{
+    for(const auto& studentas: visi_studentai)
+    {
+        if (studentas.rez < 5.0)
+        {
+            vargsiukai.push_back(studentas);
+        } else
+        {
+            kietekai.push_back(studentas);
+        }
+    }
+}
+
+void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>& kietekai)
+{
+    string kiek = to_string(kiekis);
+
+    ofstream outfile(kiek+"out1.txt");
+    outfile<<"Vardas     Pavarde   Galutinis";
+
+    for(const auto& studentas: vargsiukai)
+    {
+        outfile<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+    }
+    outfile.close();
+
+
+    ofstream outfile2(kiek+"out2.txt");
+    outfile2<<"Vardas     Pavarde   Galutinis";
+
+    for(const auto& studentas: kietekai)
+    {
+        outfile2<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+    }
+    outfile2.close();
 }
