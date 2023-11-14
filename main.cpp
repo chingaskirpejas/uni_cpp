@@ -4,11 +4,9 @@
 
 int main()
 {
-
-
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;
     cout<<"Studentu rankiniui ivedimui spauskite 2"<<endl;
-    cout<<"Studentu failu generavimui spauskite 3"<<endl;
+    cout<<"Studentu failu su vector ir list tipo konteineriais spauskite 3"<<endl;
     string atsakymas;
     cin>>atsakymas;
     try {
