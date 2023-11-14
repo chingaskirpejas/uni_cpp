@@ -114,7 +114,7 @@ void printas(vector <Studentas> sarasas)
 }
 
 
-void printas(list<Studentas>& sarasas)
+void printas_list(list<Studentas>& sarasas)
 {
     sarasas.sort(pagal_varda);
     string decision;
