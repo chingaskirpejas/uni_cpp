@@ -35,3 +35,9 @@ Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui, bei
 
 ## Analizės rezultatai
 
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/aadfb220-2f0b-4a6a-a9b1-9c5e1e0f4c16)![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/b2c1ef0d-450f-46e7-be10-3cf010b2fbf3)
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/628932f9-ed8b-491e-ac6a-d86ccf8a03bf)![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/af02944a-0147-4c3b-bbeb-b36b5dce2822)
+![image](https://github.com/chingaskirpejas/uni_cpp/assets/47268986/106fa664-649f-45f9-b487-543ab5206540)
+
+
+
