@@ -14,7 +14,7 @@ struct Studentas {
 
 list<Studentas> list_inputas();
 vector <Studentas> inputas();
-void printas(vector <Studentas> sarasas);
+void printas(vector <Studentas>& sarasas);
 void printas_list(list<Studentas>& sarasas);
 float vidurkis(vector <int> pazymiai, int egzaminas);
 float mediana(vector <int> pazymiai);
