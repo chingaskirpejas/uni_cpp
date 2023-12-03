@@ -46,7 +46,7 @@ void run_vector_test(int amount, int paz_kiek)
     vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-
+    vector <Studentas> studentai2(visi_studentai);
     cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
 
@@ -57,12 +57,26 @@ void run_vector_test(int amount, int paz_kiek)
     vargsiukai.reserve(amount);
     vector <Studentas> kietekai;
     kietekai.reserve(amount);
-
+    // BUDAS Nr 1
     atrinkimas(visi_studentai, vargsiukai, kietekai);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Masyvo rusiavimas uztruko "<< duration.count() << " ms"<< endl;
+    cout<<"Masyvo rusiavimas 1 budu uztruko "<< duration.count() << " ms"<< endl;
+
+    start = std::chrono::high_resolution_clock::now();
+    // BUDAS Nr 2
+    atrinkimas2(visi_studentai, vargsiukai);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    cout<<"Masyvo rusiavimas 2 budu uztruko "<< duration.count() << " ms"<< endl;
+
+    start = std::chrono::high_resolution_clock::now();
+    // BUDAS Nr 3
+    atrinkimas2(studentai2, vargsiukai);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    cout<<"Masyvo rusiavimas 3 budu uztruko "<< duration.count() << " ms"<< endl;
 
 
     //      RASYMAS I FAILUS
