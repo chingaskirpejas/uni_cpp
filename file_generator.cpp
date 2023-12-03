@@ -151,7 +151,7 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
 }
 
 
-void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
+void atrinkimas1(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
 {
     for(const auto& studentas: visi_studentai)
     {
@@ -164,6 +164,31 @@ void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiuk
         }
     }
 }
+
+void atrinkimas2(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
+{
+    for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
+        if (i->rez < 5.0) {
+            vargsiukai.push_back(*i);
+            i = visi_studentai.erase(i);
+        } else {
+            ++i;
+        }
+    }
+}
+
+void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
+{
+    auto criteria = [](const Studentas& obj) {
+        return obj.rez < 5.0;
+    };
+    auto i = std::partition(visi_studentai.begin(), visi_studentai.end(), criteria);
+
+    vargsiukai.assign(visi_studentai.begin(), i);
+    visi_studentai.erase(visi_studentai.begin(), i);
+
+}
+
 
 void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
 {
