@@ -16,17 +16,17 @@ void generate_files()
     create_x(100000, stoi(paz_ans));
     create_x(1000000, stoi(paz_ans));
     create_x(10000000, stoi(paz_ans));
-
+    cout<<"--------------------------------------------------"<<endl<<endl;
     cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
-
+    cout<<"--------------------------------------------------"<<endl<<endl;
     run_vector_test(1000, stoi(paz_ans));
     run_vector_test(10000, stoi(paz_ans));
     run_vector_test(100000, stoi(paz_ans));
     run_vector_test(1000000, stoi(paz_ans));
     run_vector_test(10000000, stoi(paz_ans));
-
+    cout<<"--------------------------------------------------"<<endl<<endl;
     cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
-
+    cout<<"--------------------------------------------------"<<endl<<endl;
     run_list_test(1000, stoi(paz_ans));
     run_list_test(10000, stoi(paz_ans));
     run_list_test(100000, stoi(paz_ans));
