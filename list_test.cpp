@@ -10,7 +10,7 @@ void run_list_test(int amount, int paz_kiek)
     list <Studentas> visi_studentai = read_file_list(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-
+    list <Studentas> stud2(visi_studentai);
     cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
 
@@ -20,11 +20,27 @@ void run_list_test(int amount, int paz_kiek)
     list <Studentas> vargsiukai;
     list <Studentas> kietekai;
 
+    // BUDAS Nr 1
     list_atrinkimas(visi_studentai, vargsiukai, kietekai);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Masyvo rusiavimas uztruko "<< duration.count() << " ms"<< endl;
+    cout<<"Masyvo rusiavimas 1 budu uztruko "<< duration.count() << " ms"<< endl;
+
+    start = std::chrono::high_resolution_clock::now();
+    // BUDAS Nr 2
+    list_atrinkimas2(visi_studentai, vargsiukai);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    cout<<"Masyvo rusiavimas 2 budu uztruko "<< duration.count() << " ms"<< endl;
+
+    start = std::chrono::high_resolution_clock::now();
+    // BUDAS Nr 3
+    list_atrinkimas3(stud2, vargsiukai);
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    cout<<"Masyvo rusiavimas 3 budu uztruko "<< duration.count() << " ms"<< endl;
+
 
 
     //      RASYMAS I FAILUS
@@ -95,6 +111,31 @@ void list_atrinkimas(list<Studentas>& visi_studentai, list<Studentas>& vargsiuka
         }
     }
 }
+
+void list_atrinkimas2(list <Studentas>& visi_studentai, list <Studentas>& vargsiukai)
+{
+    for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
+        if (i->rez < 5.0) {
+            vargsiukai.push_back(*i);
+            i = visi_studentai.erase(i);
+        } else {
+            ++i;
+        }
+    }
+}
+
+void list_atrinkimas3(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
+{
+    auto criteria = [](const Studentas& obj){
+        return obj.rez <5.0;
+    };
+
+    std::remove_copy_if(visi_stud.begin(), visi_stud.end(), std::back_inserter(vargsiukai), criteria);
+
+    visi_stud.erase(remove_if(visi_stud.begin(), visi_stud.end(), criteria), visi_stud.end());
+}
+
+
 
 void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>& kietekai)
 {

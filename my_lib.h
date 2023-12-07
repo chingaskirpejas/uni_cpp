@@ -27,3 +27,4 @@ using std::getline;
 using std::istringstream;
 using std::ofstream;
 using std::to_string;
+using std::remove_if;

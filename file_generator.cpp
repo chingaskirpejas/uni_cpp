@@ -73,7 +73,7 @@ void run_vector_test(int amount, int paz_kiek)
 
     start = std::chrono::high_resolution_clock::now();
     // BUDAS Nr 3
-    atrinkimas2(studentai2, vargsiukai);
+    atrinkimas3(studentai2, vargsiukai);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     cout<<"Masyvo rusiavimas 3 budu uztruko "<< duration.count() << " ms"<< endl;
@@ -165,7 +165,7 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
 }
 
 
-void atrinkimas1(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
+void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
 {
     for(const auto& studentas: visi_studentai)
     {
