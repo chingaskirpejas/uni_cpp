@@ -27,11 +27,12 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
  Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui:
  - Sukuriamas ir užpildomas failas
  - Nuskaitomas failo turinys
- - Failo turinys surūšiuojamas pagal minėtą kriterijų
+ - Failo turinys surūšiuojamas pagal minėtą kriterijų trimis skirtingais budais
+ - Visi rūšiavimo ir nuskaitymo rezultatai išvedami į ekraną
 
 ### Analizės išvados
-Vector konteinerio atveju <br>
-
+Vector konteinerio atveju 
+<br>
 |                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
 | --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
 |  Failo nuskaitymo laikas                      | 0,007 s | 0,040 s | 0,385 s | 4,289 s | 39,19 s  |
@@ -41,10 +42,10 @@ Vector konteinerio atveju <br>
 |                      |  1 strategija | 2 strategija | 3 strategija |
 | -------------------- |:-------------:|:------------:|:------------:|
 | 1000                 | 0 s | 0 s | 0 s |
-| 10000                | 0,002s     | 0,001 s | 0,002 s |
-| 100000               | 0,020 s | 0,019 s | 0,022 s |
-| 1000000              | 0,254 s | 0,355 s | 0,246 s |
-| 10000000             | 0,009 s | 0,058 s | 0,525 s |
+| 10000                | 0,002 s | 0,002 s | 0,002 s |
+| 100000               | 0,029 s | 0,028 s | 0,022 s |
+| 1000000              | 0,383 s | 0,215 s | 0,314 s |
+| 10000000             | 27,580 s | 10,363 s | 33,330 s |
 
 
 List konteinerio atveju <br>
@@ -54,11 +55,21 @@ List konteinerio atveju <br>
 |  Failo nuskaitymo laikas                      | 0,007 s | 0,039 s | 0,391 s | 4,108 s | 43,785 s |
 |  Failo išrūšiavimo vidutinis laikas           | 0 s     | 0,003 s | 0,036 s | 0,395 s | 9,195 s  |
 |  Išrašymo į failus laikas                     | 0,008 s | 0,05 s  | 0,52 s  | 5,261 s | 55,987 s |
+
+|                      |  1 strategija | 2 strategija | 3 strategija |
+| -------------------- |:-------------:|:------------:|:------------:|
+| 1000                 | 0,002 s | 0,001 s | 0 s |
+| 10000                | 0,005 s | 0,005 s | 0,005 s |
+| 100000               | 0,093 s | 0,097 s | 0,084 s |
+| 1000000              | 0,595 s | 0,548 s | 0,234 s |
+| 10000000             | 54,186 s | 37,327 s | 23,970 s |
 <br>
 <br>
+### Analizės rezultatai
 
+Pagal turimus duomenis matome, jog /*Vector*/ konteinerio atveju **antra** strategija yra efektyvesne su didesniais duomenų kiekiais. Taip pat matome jog /*List*/ konteinerio atveju, efektyviausia strategija yra **trečia**.
 
-Kompiuterio specifikacijos:<br>
+### Kompiuterio specifikacijos
 CPU: Intel Core i5-6500 @ 3.2GHz<br>
 GPU: Nvidia GTX 1060 3GB<br>
 RAM: 8gb<br>
