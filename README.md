@@ -69,7 +69,7 @@ List konteinerio atveju <br>
 
 Pagal turimus duomenis matome, jog /*Vector*/ konteinerio atveju **antra** strategija yra efektyvesne su didesniais duomenų kiekiais. Taip pat matome jog /*List*/ konteinerio atveju, efektyviausia strategija yra **trečia**.
 
-### Kompiuterio specifikacijos
+## Kompiuterio specifikacijos
 CPU: Intel Core i5-6500 @ 3.2GHz<br>
 GPU: Nvidia GTX 1060 3GB<br>
 RAM: 8gb<br>
