@@ -10,7 +10,7 @@ void generate_files()
     string paz_ans;
     cin>>paz_ans;
 
-    cout<<"Kuriami failai...";
+    cout<<"Kuriami failai..."<<endl;
     create_x(1000, stoi(paz_ans));
     create_x(10000, stoi(paz_ans));
     create_x(100000, stoi(paz_ans));
@@ -40,10 +40,11 @@ void generate_files()
 void run_vector_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
-
+    vector <Studentas> visi_studentai;
+    visi_studentai.reserve(amount);
     //     FAILO NUSKAITYMAS
     auto start = std::chrono::high_resolution_clock::now();
-    vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
+    visi_studentai = read_file(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
     vector <Studentas> studentai2(visi_studentai);
@@ -178,20 +179,7 @@ void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiuk
         }
     }
 }
-
 void atrinkimas2(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
-{
-    for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
-        if (i->rez < 5.0) {
-            vargsiukai.push_back(*i);
-            i = visi_studentai.erase(i);
-        } else {
-            ++i;
-        }
-    }
-}
-
-void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
 {
     auto criteria = [](const Studentas& obj) {
         return obj.rez < 5.0;
@@ -202,6 +190,18 @@ void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiu
     visi_studentai.erase(visi_studentai.begin(), i);
 
 }
+
+void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
+{
+    auto partition_point = std::partition(visi_studentai.begin(), visi_studentai.end(), [](const Studentas& s) {
+        return s.rez >= 5.0;
+    });
+
+    vargsiukai.insert(vargsiukai.end(), partition_point, visi_studentai.end());
+    visi_studentai.resize(std::distance(visi_studentai.begin(), partition_point));
+}
+
+
 
 
 void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)

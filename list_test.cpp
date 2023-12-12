@@ -112,19 +112,7 @@ void list_atrinkimas(list<Studentas>& visi_studentai, list<Studentas>& vargsiuka
     }
 }
 
-void list_atrinkimas2(list <Studentas>& visi_studentai, list <Studentas>& vargsiukai)
-{
-    for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
-        if (i->rez < 5.0) {
-            vargsiukai.push_back(*i);
-            i = visi_studentai.erase(i);
-        } else {
-            ++i;
-        }
-    }
-}
-
-void list_atrinkimas3(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
+void list_atrinkimas2(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
 {
     auto criteria = [](const Studentas& obj){
         return obj.rez <5.0;
@@ -135,7 +123,17 @@ void list_atrinkimas3(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
     visi_stud.erase(remove_if(visi_stud.begin(), visi_stud.end(), criteria), visi_stud.end());
 }
 
-
+void list_atrinkimas3(list <Studentas>& visi_studentai, list <Studentas>& vargsiukai)
+{
+    for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
+        if (i->rez < 5.0) {
+            vargsiukai.push_back(*i);
+            i = visi_studentai.erase(i);
+        } else {
+            ++i;
+        }
+    }
+}
 
 void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>& kietekai)
 {
