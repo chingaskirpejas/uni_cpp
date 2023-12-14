@@ -19,7 +19,7 @@ void generate_files()
     }
     if(atsakymas == "G" || atsakymas == "g")
     {
-        cout<<"Kuriami failai...";
+        cout<<"Kuriami failai..."<<endl;
         auto start = std::chrono::high_resolution_clock::now();
         create_x(1000, stoi(paz_ans));
         auto stop = std::chrono::high_resolution_clock::now();
