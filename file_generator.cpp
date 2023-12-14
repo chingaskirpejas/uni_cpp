@@ -20,11 +20,41 @@ void generate_files()
     if(atsakymas == "G" || atsakymas == "g")
     {
         cout<<"Kuriami failai...";
+        auto start = std::chrono::high_resolution_clock::now();
         create_x(1000, stoi(paz_ans));
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+        cout << "1000 Failo kurimas uztruko " <<duration.count() << " ms" << endl;
+
+        start = std::chrono::high_resolution_clock::now();
         create_x(10000, stoi(paz_ans));
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+        cout << "10000 Failo kurimas uztruko " <<duration.count() << " ms" << endl;
+
+        start = std::chrono::high_resolution_clock::now();
         create_x(100000, stoi(paz_ans));
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+        cout << "100000 Failo kurimas uztruko " <<duration.count() << " ms" << endl;
+
+        start = std::chrono::high_resolution_clock::now();
         create_x(1000000, stoi(paz_ans));
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+        cout << "1000000 Failo kurimas uztruko " <<duration.count() << " ms" << endl;
+
+        start = std::chrono::high_resolution_clock::now();
         create_x(10000000, stoi(paz_ans));
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+        cout << "10000000 Failo kurimas uztruko " <<duration.count() << " ms" << endl;
+
     }
     else
     {
