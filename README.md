@@ -50,7 +50,6 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
 |  Išrašymo į failus vidutinis laikas           | 0,009 s | 0,056 s | 0,537 s| 5,257 s | 73,464 s  |
 
 ## Analizės išvados
-<br>
 
 Matome jog su mažesniais failais konteinerio tipo skirtumas nedaro beveik jokios įtakos, tačiau failo dydžiui ir duomenų kiekiui didėjant, matome, jog **List** tipo konteineris yra mažiau efektyvesnis nei **Vector**
 
