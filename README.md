@@ -1,4 +1,4 @@
-# Pirma užduotis (v0.2)
+# Pirma užduotis (v0.3)
 1. Šioje programoje naudojami duomenys susije su studentais - _vardas, pavarde, pažymiai, egzamino įvertinimas_
 2. Vartotojas turi keturias parinktis darbui su duomenimis:
  	- Duomenų įvedimas ranka
@@ -27,5 +27,24 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
  Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui:
  - Sukuriamas ir užpildomas failas
  - Nuskaitomas failo turinys
- - Failo turinys surūšiuojamas pagal minėtą kriterijų 
- - 
+ - Failo turinys surūšiuojamas pagal minėtą kriterijų i du skirtingus konteinerius
+ - Iš surušiuotų duonmenų konteineriu failai surašomi i output failus
+
+ ## Analizės rezultatai
+ **Vector tipo konteinerio rezultatai**
+ <br>
+|                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
+| --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
+|  Failo generavimo laikas                      | 0,012 s | 0,054 s | 0,53 s | 6,117 s | 65,655 s  |
+|  Failo nuskaitymo vidutinis laikas            | 0,009 s | 0,043 s | 0,395 s| 4,367 s | 44,966 s  |
+|  Failo išrūšiavimo vidutinis laikas           | 0 s     | 0,002 s | 0,02 s | 0,49 s  | 30,547 s  |
+|  Išrašymo į failus vidutinis laikas           | 0,008 s | 0,056 s | 0,560 s| 5,454 s | 57,283 s  |
+
+ **List tipo konteinerio rezultatai**
+ <br>
+|                                               |  1000   |  10000  | 100000 | 1000000 | 10000000  |
+| --------------------------------------------- |:-------:|:-------:|:------:|:-------:|:---------:|
+|  Failo generavimo laikas                      | 0,012 s | 0,054 s | 0,53 s | 6,117 s | 65,655 s  |
+|  Failo nuskaitymo vidutinis laikas            | 0,011 s | 0,061 s | 0,527 s| 5,277 s | 41,838 s  |
+|  Failo išrūšiavimo vidutinis laikas           | 0 s     | 0,004 s | 0,041 s| 0,382 s | 39,220 s  |
+|  Išrašymo į failus vidutinis laikas           | 0,009 s | 0,056 s | 0,537 s| 5,257 s | 73,464 s  |
