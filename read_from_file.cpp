@@ -2,16 +2,9 @@
 #include "functions.h"
 
 
-void read_file(int choice)
+void read_file(string filename)
 {
-    if(choice == 1)
-    {
-        parse_file("../10000.txt");
-    }
-    else
-    {
-        parse_file("../100000.txt");
-    }
+    parse_file(filename);
 }
 
 void parse_file(string const& filename)

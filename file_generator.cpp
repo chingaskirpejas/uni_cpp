@@ -9,31 +9,43 @@ void generate_files()
     cout<<"Kiek pazymiu tures mokinys?"<<endl;
     string paz_ans;
     cin>>paz_ans;
+    cout<<"Generuoti failus (g), ar testuoti duomenu konteinerius(t)?"<<endl;
+    string atsakymas;
+    cin>>atsakymas;
+    while (atsakymas != "G" && atsakymas != "g" && atsakymas != "T" && atsakymas != "t")
+    {
+        cout<<"Neteisingas pasirinkimas, bandykite dar karta"<<endl;
+        cin>>atsakymas;
+    }
+    if(atsakymas == "G" || atsakymas == "g")
+    {
+        cout<<"Kuriami failai...";
+        create_x(1000, stoi(paz_ans));
+        create_x(10000, stoi(paz_ans));
+        create_x(100000, stoi(paz_ans));
+        create_x(1000000, stoi(paz_ans));
+        create_x(10000000, stoi(paz_ans));
+    }
+    else
+    {
+        cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
 
-    cout<<"Kuriami failai...";
-    create_x(1000, stoi(paz_ans));
-    create_x(10000, stoi(paz_ans));
-    create_x(100000, stoi(paz_ans));
-    create_x(1000000, stoi(paz_ans));
-    create_x(10000000, stoi(paz_ans));
+        run_vector_test(1000, stoi(paz_ans));
+        run_vector_test(10000, stoi(paz_ans));
+        run_vector_test(100000, stoi(paz_ans));
+        run_vector_test(1000000, stoi(paz_ans));
+        run_vector_test(10000000, stoi(paz_ans));
 
-    cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
+        cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
 
-    run_vector_test(1000, stoi(paz_ans));
-    run_vector_test(10000, stoi(paz_ans));
-    run_vector_test(100000, stoi(paz_ans));
-    run_vector_test(1000000, stoi(paz_ans));
-    run_vector_test(10000000, stoi(paz_ans));
+        run_list_test(1000, stoi(paz_ans));
+        run_list_test(10000, stoi(paz_ans));
+        run_list_test(100000, stoi(paz_ans));
+        run_list_test(1000000, stoi(paz_ans));
+        run_list_test(10000000, stoi(paz_ans));
 
-    cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
-
-    run_list_test(1000, stoi(paz_ans));
-    run_list_test(10000, stoi(paz_ans));
-    run_list_test(100000, stoi(paz_ans));
-    run_list_test(1000000, stoi(paz_ans));
-    run_list_test(10000000, stoi(paz_ans));
-
-    cout<<endl<<"Testavimas baigtas"<<endl;
+        cout<<endl<<"Testavimas baigtas"<<endl;
+    }
 }
 
 
