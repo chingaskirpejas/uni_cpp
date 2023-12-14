@@ -51,6 +51,7 @@ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuo
 
 ## Analizės išvados
 <br>
+
 Matome jog su mažesniais failais konteinerio tipo skirtumas nedaro beveik jokios įtakos, tačiau failo dydžiui ir duomenų kiekiui didėjant, matome, jog **List** tipo konteineris yra mažiau efektyvesnis nei **Vector**
 
 ## Kompiuterio specifikacijos
