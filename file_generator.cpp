@@ -9,45 +9,56 @@ void generate_files()
     cout<<"Kiek pazymiu tures mokinys?"<<endl;
     string paz_ans;
     cin>>paz_ans;
+    cout<<"Generuoti failus (g), ar testuoti duomenu konteinerius(t)?"<<endl;
+    string atsakymas;
+    cin>>atsakymas;
+    while (atsakymas != "G" && atsakymas != "g" && atsakymas != "T" && atsakymas != "t")
+    {
+        cout<<"Neteisingas pasirinkimas, bandykite dar karta"<<endl;
+        cin>>atsakymas;
+    }
+    if(atsakymas == "G" || atsakymas == "g")
+    {
+        cout<<"Kuriami failai...";
+        create_x(1000, stoi(paz_ans));
+        create_x(10000, stoi(paz_ans));
+        create_x(100000, stoi(paz_ans));
+        create_x(1000000, stoi(paz_ans));
+        create_x(10000000, stoi(paz_ans));
+    }
+    else
+    {
+        cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
 
-    cout<<"Kuriami failai..."<<endl;
-    create_x(1000, stoi(paz_ans));
-    create_x(10000, stoi(paz_ans));
-    create_x(100000, stoi(paz_ans));
-    create_x(1000000, stoi(paz_ans));
-    create_x(10000000, stoi(paz_ans));
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    run_vector_test(1000, stoi(paz_ans));
-    run_vector_test(10000, stoi(paz_ans));
-    run_vector_test(100000, stoi(paz_ans));
-    run_vector_test(1000000, stoi(paz_ans));
-    run_vector_test(10000000, stoi(paz_ans));
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    run_list_test(1000, stoi(paz_ans));
-    run_list_test(10000, stoi(paz_ans));
-    run_list_test(100000, stoi(paz_ans));
-    run_list_test(1000000, stoi(paz_ans));
-    run_list_test(10000000, stoi(paz_ans));
+        run_vector_test(1000, stoi(paz_ans));
+        run_vector_test(10000, stoi(paz_ans));
+        run_vector_test(100000, stoi(paz_ans));
+        run_vector_test(1000000, stoi(paz_ans));
+        run_vector_test(10000000, stoi(paz_ans));
 
-    cout<<endl<<"Testavimas baigtas"<<endl;
+        cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
+
+        run_list_test(1000, stoi(paz_ans));
+        run_list_test(10000, stoi(paz_ans));
+        run_list_test(100000, stoi(paz_ans));
+        run_list_test(1000000, stoi(paz_ans));
+        run_list_test(10000000, stoi(paz_ans));
+
+        cout<<endl<<"Testavimas baigtas"<<endl;
+    }
 }
 
 
 void run_vector_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
-    vector <Studentas> visi_studentai;
-    visi_studentai.reserve(amount);
+
     //     FAILO NUSKAITYMAS
     auto start = std::chrono::high_resolution_clock::now();
-    visi_studentai = read_file(amount, paz_kiek);
+    vector <Studentas> visi_studentai = read_file(amount, paz_kiek);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-    vector <Studentas> studentai2(visi_studentai);
+
     cout << "Failo nuskaitymas uztruko " <<duration.count() << " ms" << endl;
 
 
@@ -58,26 +69,12 @@ void run_vector_test(int amount, int paz_kiek)
     vargsiukai.reserve(amount);
     vector <Studentas> kietekai;
     kietekai.reserve(amount);
-    // BUDAS Nr 1
+
     atrinkimas(visi_studentai, vargsiukai, kietekai);
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    cout<<"Masyvo rusiavimas 1 budu uztruko "<< duration.count() << " ms"<< endl;
-
-    start = std::chrono::high_resolution_clock::now();
-    // BUDAS Nr 2
-    atrinkimas2(visi_studentai, vargsiukai);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-    cout<<"Masyvo rusiavimas 2 budu uztruko "<< duration.count() << " ms"<< endl;
-
-    start = std::chrono::high_resolution_clock::now();
-    // BUDAS Nr 3
-    atrinkimas3(studentai2, vargsiukai);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-    cout<<"Masyvo rusiavimas 3 budu uztruko "<< duration.count() << " ms"<< endl;
+    cout<<"Masyvo rusiavimas uztruko "<< duration.count() << " ms"<< endl;
 
 
     //      RASYMAS I FAILUS
@@ -179,30 +176,6 @@ void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiuk
         }
     }
 }
-void atrinkimas2(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
-{
-    auto criteria = [](const Studentas& obj) {
-        return obj.rez < 5.0;
-    };
-    auto i = std::partition(visi_studentai.begin(), visi_studentai.end(), criteria);
-
-    vargsiukai.assign(visi_studentai.begin(), i);
-    visi_studentai.erase(visi_studentai.begin(), i);
-
-}
-
-void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
-{
-    auto partition_point = std::partition(visi_studentai.begin(), visi_studentai.end(), [](const Studentas& s) {
-        return s.rez >= 5.0;
-    });
-
-    vargsiukai.insert(vargsiukai.end(), partition_point, visi_studentai.end());
-    visi_studentai.resize(std::distance(visi_studentai.begin(), partition_point));
-}
-
-
-
 
 void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
 {
@@ -227,5 +200,3 @@ void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas
     }
     outfile2.close();
 }
-
-
