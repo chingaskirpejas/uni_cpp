@@ -6,7 +6,8 @@
 	- Duomenų nuskaitymas iš failo
 	- Failų su duomenimis generavimas
 3. Duomenų išvedimo į ekraną metu bus rodomi studento vardas, **pavardė bei galutinis rezultatas**, _jei vartotojas pasirenka duomenų įvedimą ranka turėtų būt papildomai nurodoma pagal kokius kriterijus išvesti duomenis (**vidurkis** arba **mediana**)_
-
+## Programos paleidimo vadovas
+Greitam programos paleidimui jums tereikia atsisiųsti aplanką pavadinimu "zuba". Atsisiuntę aplanką jį atsidarykite ir paleiskite failą pavadinimų "setup.bat" ir programa automatiškai susikurs aplinką bei pradės veikti.
 ## Programos veikimo analizė
 Programos veikimas buvo analizuojamas penkiais skirtingais failų dydžiais (failo pavadinime nurodytas studentų skaičius faile).<br>
 ```
@@ -74,6 +75,7 @@ Matome jog su mažesniais failais konteinerio tipo skirtumas nedaro beveik jokio
 Iš rezultatų galima teigti, jog **Vector** konteinerio atveju naudoti antra strategija yra optimaliausia, kadangi darbe su mažais failais efektyvumu playginti su kitomis strategijomis
 jinai skiriasi neduaug, tačiau prasidedant darbui su dideliais failais (žr. 10 mil. stulpelį) jinai veikia žymiai efektyviau. 
 O **List** konteinerio atveju, optimaliausia naudoti trečiąją strategiją, kuri visais atvejais (su mažais bei dideliais failais) yra efektyvesnė.
+
 ## Kompiuterio specifikacijos
 
 CPU: Intel Core i5-6500 @ 3.2GHz<br>
